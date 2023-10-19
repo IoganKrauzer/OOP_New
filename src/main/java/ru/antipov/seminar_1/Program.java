@@ -39,11 +39,12 @@ public class Program {
         System.out.println(vendingMachine);
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Что вы желаете выбрать?"
-                            + "\n1 - Bottle of Milk"
-                            + "\n2 - Bottle of Water"
-                            + "\n3 - Package of Cigarettes"
-                            + "\n4 - Can of Beer");
+        System.out.println("""
+                Что вы желаете выбрать?
+                1 - Bottle of Milk
+                2 - Bottle of Water
+                3 - Package of Cigarettes
+                4 - Can of Beer""");
 
         String choices = sc.nextLine();
         List<Object> paramList = new ArrayList<>();
@@ -52,10 +53,10 @@ public class Program {
             case "1":
                 listWithParametres.parameteresForMilk();
                 BottleOfMilk bottleOfMilk = vendingMachine.getProductBottle(
-                        (String) listWithParametres.getListWithParametres().get(0),
-                        (Double) listWithParametres.getListWithParametres().get(1),
-                        (Double) listWithParametres.getListWithParametres().get(2),
-                        (Double) listWithParametres.getListWithParametres().get(3));
+                        (String) ListWithParametres.getListWithParametres().get(0),
+                        (Double) ListWithParametres.getListWithParametres().get(1),
+                        (Double) ListWithParametres.getListWithParametres().get(2),
+                        (Double) ListWithParametres.getListWithParametres().get(3));
                 if (bottleOfMilk == null){
                     System.out.println("Такого товара в автомате нет");
                 }
@@ -68,9 +69,9 @@ public class Program {
             case "2":
                 listWithParametres.parameteresForWater();
                 BottleOfWater bottleOfWater = vendingMachine.getProductBottle(
-                        (String) listWithParametres.getListWithParametres().get(0),
-                        (Double) listWithParametres.getListWithParametres().get(1),
-                        (Double) listWithParametres.getListWithParametres().get(2));
+                        (String) ListWithParametres.getListWithParametres().get(0),
+                        (Double) ListWithParametres.getListWithParametres().get(1),
+                        (Double) ListWithParametres.getListWithParametres().get(2));
                 if (bottleOfWater == null){
                     System.out.println("Такого товара в автомате нет");
                 }
@@ -83,8 +84,8 @@ public class Program {
             case "3":
                 listWithParametres.parameteresForCigarettes();
                 PackageOfCigarettes packageOfCigarettes = vendingMachine.getProductOther(
-                        (String) listWithParametres.getListWithParametres().get(0),
-                        (Double) listWithParametres.getListWithParametres().get(1));
+                        (String) ListWithParametres.getListWithParametres().get(0),
+                        (Double) ListWithParametres.getListWithParametres().get(1));
                 if (packageOfCigarettes == null){
                     System.out.println("Такого товара в автомате нет");
                 }
@@ -97,10 +98,10 @@ public class Program {
             case "4":
                 listWithParametres.parameteresForBeer();
                 CanOfBeer canOfBeer = vendingMachine.getProductOther(
-                        (String) listWithParametres.getListWithParametres().get(0),
-                        (Double) listWithParametres.getListWithParametres().get(1),
-                        (Double) listWithParametres.getListWithParametres().get(2),
-                        (Double) listWithParametres.getListWithParametres().get(3));
+                        (String) ListWithParametres.getListWithParametres().get(0),
+                        (Double) ListWithParametres.getListWithParametres().get(1),
+                        (Double) ListWithParametres.getListWithParametres().get(2),
+                        (Double) ListWithParametres.getListWithParametres().get(3));
                 if (canOfBeer == null){
                     System.out.println("Такого товара в автомате нет");
                 }

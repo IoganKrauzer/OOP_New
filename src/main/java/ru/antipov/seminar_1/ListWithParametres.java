@@ -9,7 +9,7 @@ public class ListWithParametres {
     public  static List<Object> listWithParametres;
 
     public ListWithParametres(List<Object> listWithParametres) {
-        this.listWithParametres = listWithParametres;
+        ListWithParametres.listWithParametres = listWithParametres;
     }
 
     static Scanner sc = new Scanner(System.in);
