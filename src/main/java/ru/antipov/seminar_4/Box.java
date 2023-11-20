@@ -8,20 +8,21 @@ public class Box <T extends Fruit> {
     private ArrayList<T> fruits = new ArrayList<>();
 
 
-
-    public void addFruitInBox(T fruit){
-        fruits.add(fruit);
+    public void addFruitInBox(T fruit) throws BoxAddException {
+        if (!fruits.add(fruit)){
+            throw new BoxAddException("Wrong fruit!");
+        };
     }
 
-    public float getWeight(){
+    public float getWeight() {
         float sumWeight = 0.0f;
-        for (Fruit f: fruits){
+        for (Fruit f : fruits) {
             sumWeight += f.getWeight();
         }
         return sumWeight;
     }
 
-    public boolean compareWeight(Box other){
+    public boolean compareWeight(Box other) {
         return getWeight() == other.getWeight();
     }
 
@@ -33,13 +34,13 @@ public class Box <T extends Fruit> {
         return fruits.get(0);
     }
 
-    public void deleteFruit(){
+    public void deleteFruit() {
         fruits.remove(0);
     }
 
-//    public ArrayList<T> getFruits() {
-//        return fruits;
-//    }
+    public ArrayList<T> getFruits() {
+        return fruits;
+    }
 //
 //    public int boxSize(){
 //        return fruits.size();
@@ -47,9 +48,17 @@ public class Box <T extends Fruit> {
 
     @Override
     public String toString() {
-        return ""  + fruits ;
+        return "" + fruits;
     }
 
 
+    public void replaceAll(Box<T> other) {
+        other.getFruits().addAll(fruits);
+        fruits.clear();
+    }
+
+    public boolean isProductsComparable(Box otherBox) {
+        return fruits.get(0).getClass() != otherBox.getFruits().get(0).getClass();
+    }
 }
 

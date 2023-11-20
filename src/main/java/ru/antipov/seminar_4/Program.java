@@ -35,7 +35,7 @@ public class Program {
 
         Box<Apple> box1 = new Box<>();
         Box<Orange> box2 = new Box<>();
-//        Box<Apple> box3 = new Box<>();
+        Box<Apple> box3 = new Box<>();
 //        Box<Orange> box4 = new Box<>();
 
         for (Fruit fruit: fruitBasket){
@@ -46,7 +46,7 @@ public class Program {
                 box2.addFruitInBox((Orange) fruit);
             }
         }
-//        box3.addFruitInBox(new Apple());
+        box3.addFruitInBox(new Apple());
 
         System.out.println("--------------------------");
         System.out.println("Коробка 1: " + box1.toString().replace("[","").replace("]", ""));
@@ -68,6 +68,11 @@ public class Program {
 //        System.out.printf("\nКоробка с апельсинами весит: %.2f", box2.getWeight());
 //        System.out.printf("\nКоробка с яблоками весит: %.2f", box3.getWeight());
 //        System.out.printf("\nКоробка с апельсинами весит: %.2f", box4.getWeight());
+
+        box1.replaceAll(box3);
+            Orange or = new Orange();
+//            box1.addFruitInBox(or);
+        System.out.println(box1.isProductsComparable(box2));
 
 
     }
