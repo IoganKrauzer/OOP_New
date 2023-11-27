@@ -1,7 +1,5 @@
 package ru.antipov.seminar_5.presenters;
 
-import ru.antipov.seminar_5.models.Table;
-import ru.antipov.seminar_5.views.BookingView;
 
 import java.util.Date;
 
@@ -29,6 +27,18 @@ public class BookingPresenter implements ViewObserver {
         }
         catch (RuntimeException e){
             view.showReservationTableResult(-1);
+        }
+    }
+
+    @Override
+    public void onChangeReservationTable(int oldReservation, Date orderDate, int tableNo, String surname) {
+        System.out.println("Презентер реагирует на событие.");
+        try {
+            int newReservationNo = model.changeReservationTable(oldReservation, orderDate, tableNo, surname);
+            view.showChangeReservationTableResult(newReservationNo);
+        }
+        catch (RuntimeException e){
+            view.showChangeReservationTableResult(-1);
         }
     }
 }

@@ -22,6 +22,7 @@ public class TableModel implements Model {
         return tables;
     }
 
+
     @Override
     public int reservationTable(Date reservationDate, int tableNo, String surname) {
         for (Table table: loadTables()){
@@ -32,5 +33,25 @@ public class TableModel implements Model {
             }
         }
         throw new RuntimeException("Некорректный номер столика");
+    }
+
+    @Override
+    public int changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String surname) {
+
+        for (Table table: loadTables()) {
+            for (Reservation reservation : table.getReservations()) {
+                if (reservation.getId() == oldReservation){
+                    table.getReservations().remove(reservation);
+                    break;
+                }
+            }
+        }
+        return reservationTable(reservationDate, tableNo, surname);
+    }
+
+    public void check(){
+        for (Table table: loadTables()){
+            System.out.println(table.getReservations());
+        }
     }
 }

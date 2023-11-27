@@ -34,17 +34,37 @@ public class BookingView implements View {
         }
     }
 
+    @Override
+    public void showChangeReservationTableResult(int newReservationNumber) {
+        if (newReservationNumber > 0){
+            System.out.printf("Старая бронь была отменена и новый столик забронирован. Номер резерва: #%d\n",
+                    newReservationNumber);
+        }
+        else {
+            System.out.println("Произошла ошибка перебронирования. Повторите операцию позже.");
+        }
+    }
+
+
     /**
      * Клиент как буд-то кликает на кнопку. Бронирование столика.
-     * @param orderDate
-     * @param tableNo
-     * @param surname
+     * @param orderDate дата бронирования
+     * @param tableNo номер столика
+     * @param surname Фамилия клиента
      */
     public void reservationTable(Date orderDate, int tableNo, String surname){
         System.out.println("Возбуждается событие бронирования столика.");
         System.out.println("Происходит уведомление наблюдателей...");
         for (ViewObserver observer: observers){
             observer.onReservationTable(orderDate, tableNo, surname);
+        }
+    }
+
+    public void changeReservationTable(int oldReservation, Date orderDate, int tableNo, String surname){
+        System.out.println("Возбуждается событие изменения бронирования столика.");
+        System.out.println("Происходит уведомление наблюдателей...");
+        for (ViewObserver observer: observers){
+            observer.onChangeReservationTable (oldReservation, orderDate, tableNo, surname);
         }
     }
 }
