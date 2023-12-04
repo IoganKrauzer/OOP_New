@@ -15,7 +15,7 @@ public class Program {
         bookingView.reservationTable(new Date(), 3, "Васильянов");
         bookingView.reservationTable(new Date(), 2, "Король Васильянов");
         tableModel.check();
-        bookingView.changeReservationTable(1001, new Date(), 3, "Васильянов");
+        bookingView.changeReservationTable(1001, new Date(), 5, "Васильянов");
         tableModel.check();
 
     }
