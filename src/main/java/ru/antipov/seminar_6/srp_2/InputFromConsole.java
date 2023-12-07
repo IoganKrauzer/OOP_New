@@ -21,7 +21,7 @@ public class InputFromConsole {
         order.setPrice(price);
     }
 
-    public String prompt(String message){
+    private String prompt(String message){
         System.out.println(message);
         return scanner.nextLine();
     }
