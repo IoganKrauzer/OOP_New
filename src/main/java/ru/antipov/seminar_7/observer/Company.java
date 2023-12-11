@@ -2,21 +2,37 @@ package ru.antipov.seminar_7.observer;
 
 import java.util.Random;
 
+
+
 public class Company {
 
-    private Random random = new Random();
-    private String name;
-    private Publisher jobAgency;
-    private int maxSalary;
 
-    public Company(String name, Publisher jobAgency, int maxSalary) {
-        this.name = name;
+    private String companyName;
+    private Publisher jobAgency;
+    private Vacancy vacancy;
+
+
+    public Company(String companyName, Publisher jobAgency, Vacancy vacancy) {
+        this.companyName = companyName;
         this.jobAgency = jobAgency;
-        this.maxSalary = maxSalary;
+        this.vacancy = vacancy;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public Vacancy getVacancy() {
+        return vacancy;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "----------------------------\nCompany name: " + companyName + vacancy;
     }
 
     public void needEmployee(){
-        int salary = random.nextInt(maxSalary);
-        jobAgency.sendOffer(name, salary);
-    }
+        jobAgency.sendOffer(companyName, vacancy);
+   }
 }

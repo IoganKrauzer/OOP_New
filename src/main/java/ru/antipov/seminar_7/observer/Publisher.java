@@ -4,5 +4,8 @@ public interface Publisher {
 
     void registerObserver (Observer observer);
     void removeObserver (Observer observer);
-    void sendOffer(String companyName, int salary);
+    boolean checkVacancyType (Observer observer, Vacancy vacancy);
+    boolean checkWorkExperience(Observer observer, Vacancy vacancy);
+    void sendOffer(String companyName, Vacancy vacancy);
+
 }

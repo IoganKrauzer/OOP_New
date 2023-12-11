@@ -5,7 +5,7 @@ import java.util.Collection;
 
 public class JobAgency implements Publisher{
 
-    private Collection<Observer> observers = new ArrayList<>();
+    private ArrayList<Observer> observers = new ArrayList<>();
 
 
     @Override
@@ -15,14 +15,40 @@ public class JobAgency implements Publisher{
 
     @Override
     public void removeObserver(Observer observer) {
+
         observers.remove(observer);
     }
 
+
     @Override
-    public void sendOffer(String companyName, int salary) {
-//        System.out.printf("Компания %s предлагает зарплату - %d", companyName, salary);
+    public boolean checkVacancyType(Observer observer, Vacancy vacancy) {
+            if (observer.getType().equals(vacancy.getVacancyType())){
+                return true;
+            }
+        return false;
+        }
+
+    @Override
+    public boolean checkWorkExperience(Observer observer, Vacancy vacancy) {
+        if (observer.getWorkExperience() >= vacancy.getWorkExperience()){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void sendOffer(String companyName, Vacancy vacancy ) {
+
         for (Observer observer: observers){
-            observer.receiveOffer(companyName, salary);
+            if ((checkVacancyType(observer, vacancy))  && (checkWorkExperience(observer, vacancy))){
+                observer.receiveOffer(companyName, vacancy);
+            }
+            else {
+                System.out.println(observer.getName() + " - нет соответствия условиям. "
+                                + "Профессия: " + observer.getType() + " | Зарплата: " + observer.getSalary()
+                                + " | Опыт работы: " + observer.getWorkExperience()
+                                +"\nВакансия: " + vacancy );
+            }
         }
     }
 }
