@@ -5,7 +5,6 @@ import java.util.List;
 public class VendingMachine {
 
     List<Product> productList;
-
     public VendingMachine(List<Product> productList) {
         this.productList = productList;
     }
